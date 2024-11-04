@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Resume</title>
+    <style>
+        body {
+            background-image: url('/static/img2.png'); /* Adjust the URL to your background image */
+            background-size: cover;
+            color: white; /* Text color for better contrast */
+            font-family: Arial, sans-serif; /* Font style */
+            display: flex; /* Use flexbox for centering */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center align items */
+            justify-content: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+            text-align: center; /* Center align text */
+        }
+        h1 {
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Add shadow for better readability */
+        }
+        form {
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background for form */
+            padding: 20px; /* Padding inside the form */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+            width: 300px; /* Set a fixed width for the form */
+        }
+        label {
+            display: block; /* Make labels block elements */
+            margin: 10px 0 5px; /* Spacing around labels */
+        }
+        input[type="file"] {
+            margin: 10px 0; /* Spacing above and below file input */
+        }
+        input[type="submit"] {
+            background-color: #007BFF; /* Button color */
+            color: white; /* Button text color */
+            border: none; /* Remove border */
+            padding: 10px; /* Button padding */
+            font-size: 16px; /* Button font size */
+            cursor: pointer; /* Change cursor on hover */
+            border-radius: 5px; /* Rounded corners */
+            margin-top: 10px; /* Spacing above button */
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Darker color on hover */
+        }
+        ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0; /* Remove default padding */
+            margin: 20px 0; /* Spacing around the list */
+        }
+        li {
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background for messages */
+            margin: 5px 0; /* Spacing between items */
+            padding: 10px; /* Padding inside list items */
+            border-radius: 5px; /* Rounded corners */
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Resume</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="resume">Resume:</label>
+        <input type="file" name="resume" required>
+        <input type="submit" value="Upload">
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

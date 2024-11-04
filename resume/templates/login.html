@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            background-image: url('/static/login.png'); /* Adjust the URL to your background image */
+            background-size: cover;
+            color: white; /* Text color for better contrast */
+            font-family: Arial, sans-serif; /* Font style */
+            display: flex; /* Use flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default margin */
+        }
+        form {
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background for form */
+            padding: 20px; /* Padding inside the form */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+            width: 300px; /* Set a fixed width for the form */
+            text-align: center; /* Center align text in form */
+        }
+        label {
+            display: block; /* Make labels block elements */
+            margin: 10px 0 5px; /* Spacing around labels */
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%; /* Full width inputs */
+            padding: 10px; /* Padding inside inputs */
+            border: none; /* Remove default border */
+            border-radius: 4px; /* Rounded corners for inputs */
+        }
+        button {
+            background-color: #007BFF; /* Button color */
+            color: white; /* Button text color */
+            border: none; /* Remove border */
+            padding: 10px; /* Button padding */
+            font-size: 16px; /* Button font size */
+            cursor: pointer; /* Change cursor on hover */
+            border-radius: 5px; /* Rounded corners */
+            margin-top: 10px; /* Spacing above button */
+        }
+        button:hover {
+            background-color: #0056b3; /* Darker color on hover */
+        }
+        p {
+            margin-top: 15px; /* Spacing above paragraph */
+        }
+        a {
+            color: #FFD700; /* Gold color for links */
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        <h1>Login</h1>
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+        <button type="submit">Login</button>
+        <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </form>
+</body>
+</html>
